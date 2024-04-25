@@ -43,8 +43,7 @@ if (Common === undefined)
 Common.Controllers = Common.Controllers || {};
 
 define([
-    'core',
-    'common/main/lib/view/ExternalOleEditor'
+    'core'
 ], function () { 'use strict';
     Common.Controllers.ExternalOleEditor = Backbone.Controller.extend(_.extend((function() {
         var appLang         = '{{DEFAULT_LANG}}',
@@ -136,10 +135,19 @@ define([
                         }, this)
                     }
                 });
+
+                Common.NotificationCenter.on('script:loaded', _.bind(this.onPostLoadComplete, this));
             },
 
-            onLaunch: function() {
-                this.oleEditorView = this.createView('Common.Views.ExternalOleEditor', {handler: _.bind(this.handler, this)});
+            onLaunch: function() {},
+
+            onPostLoadComplete: function() {
+                var viewOptions = {
+                    handler: _.bind(this.handler, this)
+                };
+
+                this.oleEditorView = new Common.Views.ExternalOleEditor(viewOptions);
+                this.setView('Common.Views.ExternalOleEditor', this.oleEditorView, viewOptions);
             },
 
             setApi: function(api) {

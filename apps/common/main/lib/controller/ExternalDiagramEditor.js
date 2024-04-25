@@ -43,8 +43,7 @@ if (Common === undefined)
 Common.Controllers = Common.Controllers || {};
 
 define([
-    'core',
-    'common/main/lib/view/ExternalDiagramEditor'
+    'core'
 ], function () { 'use strict';
     Common.Controllers.ExternalDiagramEditor = Backbone.Controller.extend(_.extend((function() {
         var appLang         = '{{DEFAULT_LANG}}',
@@ -89,7 +88,7 @@ define([
         };
 
         return {
-            views: ['Common.Views.ExternalDiagramEditor'],
+            views: [],
 
             initialize: function() {
                 this.addListeners({
@@ -137,11 +136,19 @@ define([
                     }
                 });
 
-
+                Common.NotificationCenter.on('script:loaded', _.bind(this.onPostLoadComplete, this));
             },
 
-            onLaunch: function() {
-                this.diagramEditorView = this.createView('Common.Views.ExternalDiagramEditor', {handler: _.bind(this.handler, this)});
+            onLaunch: function() {},
+
+            onPostLoadComplete: function() {
+                var viewOptions = {
+                    handler: _.bind(this.handler, this)
+                };
+
+                console.log(Common.Views.ExternalDiagramEditor.constructor);
+                this.diagramEditorView = new Common.Views.ExternalDiagramEditor(viewOptions);
+                this.setView('Common.Views.ExternalDiagramEditor', this.diagramEditorView, viewOptions);
             },
 
             setApi: function(api) {

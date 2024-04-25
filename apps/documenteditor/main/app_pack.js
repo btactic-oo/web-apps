@@ -22,6 +22,9 @@ require([
     'common/main/lib/view/PluginPanel',
     'common/main/lib/view/ExtendedColorDialog',
     'common/main/lib/view/RenameDialog',
+    'common/main/lib/view/ExternalDiagramEditor',
+    'common/main/lib/view/ExternalMergeEditor',
+    'common/main/lib/view/ExternalOleEditor',
 
     'documenteditor/main/app/view/ParagraphSettingsAdvanced',
     'documenteditor/main/app/view/ImageSettingsAdvanced',

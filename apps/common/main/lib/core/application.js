@@ -364,6 +364,20 @@
         },
 
         /**
+         * Caches a view instance under a specified name.
+         *
+         * @param {String} name - The name of the view to set or update in the cache.
+         * @param {Backbone.View} view - The view instance to cache.
+         * @param {Object} viewOptions - Options to be passed within view.
+         */
+        setView: function(name, view, viewOptions) {
+            this._viewsCache = this._viewsCache || {};
+            this._viewsCache[name] = view;
+            this._viewsCache[name].options = viewOptions;
+            return this._viewsCache[name];
+        },
+
+        /**
          * Method to get model instance reference by name
          * Delegate to {@link Backbone.Application#getModel getModel} method
          */
