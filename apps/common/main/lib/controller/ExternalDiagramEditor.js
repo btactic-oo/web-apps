@@ -147,7 +147,9 @@ define([
                 };
 
                 console.log(Common.Views.ExternalDiagramEditor.constructor);
-                this.diagramEditorView = new Common.Views.ExternalDiagramEditor(viewOptions);
+                this.diagramEditorView = new Common.Views.ExternalDiagramEditor({
+                    alias: 'Common.Views.ExternalDiagramEditor',
+                });
                 this.setView('Common.Views.ExternalDiagramEditor', this.diagramEditorView, viewOptions);
             },
 
