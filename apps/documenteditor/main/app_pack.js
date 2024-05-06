@@ -25,6 +25,9 @@ require([
     'common/main/lib/view/ExternalDiagramEditor',
     'common/main/lib/view/ExternalMergeEditor',
     'common/main/lib/view/ExternalOleEditor',
+    'common/main/lib/view/LanguageDialog',
+    'common/main/lib/view/SearchBar',
+    'common/main/lib/view/Chat',
 
     'documenteditor/main/app/view/ParagraphSettingsAdvanced',
     'documenteditor/main/app/view/ImageSettingsAdvanced',

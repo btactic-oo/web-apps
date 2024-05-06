@@ -90,6 +90,19 @@ define([
             views: ['Common.Views.ExternalMergeEditor'],
 
             initialize: function() {
+                Common.NotificationCenter.on('script:loaded', _.bind(this.onPostLoadComplete, this));
+            },
+
+            onLaunch: function() {},
+
+            onPostLoadComplete: function() {
+                this.mergeEditorView = new Common.Views.ExternalMergeEditor({
+                    handler: _.bind(this.handler, this),
+                    alias: 'Common.Views.ExternalMergeEditor'
+                });
+
+                this.setView('Common.Views.ExternalMergeEditor', this.mergeEditorView);
+
                 this.addListeners({
                     'Common.Views.ExternalMergeEditor': {
                         'setmergedata': _.bind(this.setMergeData, this),
@@ -133,19 +146,6 @@ define([
                         }, this)
                     }
                 });
-
-                Common.NotificationCenter.on('script:loaded', _.bind(this.onPostLoadComplete, this));
-            },
-
-            onLaunch: function() {},
-
-            onPostLoadComplete: function() {
-                var viewOptions = {
-                    handler: _.bind(this.handler, this)
-                };
-
-                this.mergeEditorView = new Common.Views.ExternalMergeEditor(viewOptions);
-                this.setView('Common.Views.ExternalMergeEditor', this.mergeEditorView, viewOptions);
             },
 
             setApi: function(api) {

@@ -44,7 +44,9 @@ Common.Controllers = Common.Controllers || {};
 
 define([
     'core'
-], function () { 'use strict';
+], function () {
+    'use strict';
+
     Common.Controllers.ExternalDiagramEditor = Backbone.Controller.extend(_.extend((function() {
         var appLang         = '{{DEFAULT_LANG}}',
             customization   = undefined,
@@ -88,9 +90,22 @@ define([
         };
 
         return {
-            views: [],
+            views: ['Common.Views.ExternalDiagramEditor'],
 
             initialize: function() {
+                Common.NotificationCenter.on('script:loaded', _.bind(this.onPostLoadComplete, this));
+            },
+
+            onLaunch: function() {},
+
+            onPostLoadComplete: function() {
+                this.diagramEditorView = new Common.Views.ExternalDiagramEditor({
+                    alias: 'Common.Views.ExternalDiagramEditor',
+                    handler: _.bind(this.handler, this)
+                });
+
+                this.setView('Common.Views.ExternalDiagramEditor', this.diagramEditorView);
+
                 this.addListeners({
                     'Common.Views.ExternalDiagramEditor': {
                         'setchartdata': _.bind(this.setChartData, this),
@@ -135,22 +150,6 @@ define([
                         }, this)
                     }
                 });
-
-                Common.NotificationCenter.on('script:loaded', _.bind(this.onPostLoadComplete, this));
-            },
-
-            onLaunch: function() {},
-
-            onPostLoadComplete: function() {
-                var viewOptions = {
-                    handler: _.bind(this.handler, this)
-                };
-
-                console.log(Common.Views.ExternalDiagramEditor.constructor);
-                this.diagramEditorView = new Common.Views.ExternalDiagramEditor({
-                    alias: 'Common.Views.ExternalDiagramEditor',
-                });
-                this.setView('Common.Views.ExternalDiagramEditor', this.diagramEditorView, viewOptions);
             },
 
             setApi: function(api) {

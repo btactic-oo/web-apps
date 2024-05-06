@@ -43,7 +43,6 @@
 define([
     'core',
     'common/main/lib/view/Header',
-    'common/main/lib/view/SearchBar',
     'documenteditor/main/app/view/Viewport',
     'documenteditor/main/app/view/LeftMenu'
 ], function (Viewport) {

@@ -91,6 +91,19 @@ define([
             views: ['Common.Views.ExternalOleEditor'],
 
             initialize: function() {
+                Common.NotificationCenter.on('script:loaded', _.bind(this.onPostLoadComplete, this));
+            },
+
+            onLaunch: function() {},
+
+            onPostLoadComplete: function() {
+                this.oleEditorView = new Common.Views.ExternalOleEditor({
+                    alias: 'Common.Views.ExternalOleEditor',
+                    handler: _.bind(this.handler, this)
+                });
+
+                this.setView('Common.Views.ExternalOleEditor', this.oleEditorView);
+
                 this.addListeners({
                     'Common.Views.ExternalOleEditor': {
                         'setoledata': _.bind(this.setOleData, this),
@@ -135,19 +148,6 @@ define([
                         }, this)
                     }
                 });
-
-                Common.NotificationCenter.on('script:loaded', _.bind(this.onPostLoadComplete, this));
-            },
-
-            onLaunch: function() {},
-
-            onPostLoadComplete: function() {
-                var viewOptions = {
-                    handler: _.bind(this.handler, this)
-                };
-
-                this.oleEditorView = new Common.Views.ExternalOleEditor(viewOptions);
-                this.setView('Common.Views.ExternalOleEditor', this.oleEditorView, viewOptions);
             },
 
             setApi: function(api) {

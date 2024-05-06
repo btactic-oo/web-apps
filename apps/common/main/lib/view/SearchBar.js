@@ -37,10 +37,7 @@
  *
  */
 
-define([
-    'common/main/lib/component/Window',
-    'common/main/lib/component/Button'
-], function () {
+define([], function () {
     'use strict';
 
     Common.UI.SearchBar = Common.UI.Window.extend(_.extend({

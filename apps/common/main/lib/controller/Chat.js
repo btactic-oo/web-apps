@@ -42,8 +42,7 @@
 define([
     'core',
     'common/main/lib/collection/Users',
-    'common/main/lib/collection/ChatMessages',
-    'common/main/lib/view/Chat'
+    'common/main/lib/collection/ChatMessages'
 ], function () {
     'use strict';
 

@@ -368,13 +368,10 @@
          *
          * @param {String} name - The name of the view to set or update in the cache.
          * @param {Backbone.View} view - The view instance to cache.
-         * @param {Object} viewOptions - Options to be passed within view.
          */
-        setView: function(name, view, viewOptions) {
+        setView: function(name, view) {
             this._viewsCache = this._viewsCache || {};
             this._viewsCache[name] = view;
-            this._viewsCache[name].options = viewOptions;
-            return this._viewsCache[name];
         },
 
         /**

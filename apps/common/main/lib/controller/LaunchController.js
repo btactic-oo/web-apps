@@ -18,7 +18,10 @@ define([
             require(app.postLaunchScripts, function () {
                 Common.UI.ScreenReaderFocusManager.init(me.api);
 
-                Common.NotificationCenter.trigger('script:loaded');
+                // fixme: components don't have time to load instantly
+                setTimeout(function () {
+                    Common.NotificationCenter.trigger('script:loaded');
+                }, 10)
             });
         }
 

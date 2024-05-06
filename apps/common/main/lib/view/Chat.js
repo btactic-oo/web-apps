@@ -45,10 +45,7 @@ if (Common === undefined)
 Common.Views = Common.Views || {};
 
 define([
-    'text!common/main/lib/template/Chat.template',
-    'common/main/lib/util/utils',
-    'common/main/lib/component/BaseView',
-    'common/main/lib/component/Layout'
+    'text!common/main/lib/template/Chat.template'
 ], function (template) {
     'use strict';
 

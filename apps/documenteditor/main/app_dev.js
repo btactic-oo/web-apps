@@ -205,6 +205,7 @@ require([
                     'common/main/lib/controller/ScreenReaderFocus',
                     'common/main/lib/component/ComboBoxDataView',
                     'common/main/lib/component/ListView',
+                    'common/main/lib/component/DataView',
                     'common/main/lib/view/OptionsDialog',
                     'common/main/lib/view/CopyWarningDialog',
                     'common/main/lib/view/ImageFromUrlDialog',
@@ -228,6 +229,9 @@ require([
                     'common/main/lib/view/ExternalDiagramEditor',
                     'common/main/lib/view/ExternalMergeEditor',
                     'common/main/lib/view/ExternalOleEditor',
+                    'common/main/lib/view/LanguageDialog',
+                    'common/main/lib/view/SearchBar',
+                    'common/main/lib/view/Chat',
 
                     'documenteditor/main/app/view/ParagraphSettingsAdvanced',
                     'documenteditor/main/app/view/ImageSettingsAdvanced',
